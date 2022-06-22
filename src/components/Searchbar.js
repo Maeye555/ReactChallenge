@@ -13,6 +13,7 @@ class Searchbar extends React.Component {
         event.preventDefault();
         //send the keyword out
         this.props.handleFormSubmit(this.state.term);
+        
     }
 
     render() {
