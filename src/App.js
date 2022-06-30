@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import VideoResult from './hooks/VideoResult';
+import RouteList from './component/RouteList';
+import LinkList from './component/LinkList';
 
-function App() {
+
+
+const App = () => {
+  
+  const [videos,setVideos] = useState([]);
+  const [term, setTerm] = useState('default text');
+  //const {response,error,mutate} = VideoResult({term, setTerm,selectedVideo, setselectedVideo,videos,setVideos});
+
+  if(!videos)return(<VideoResult term = {term} setTerm={setTerm} setVideos={setVideos}/>);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VideoResult term = {term} setTerm={setTerm} setVideos={setVideos}/>
+      <LinkList videos = {videos}/>
+      <RouteList videos={videos}/>
     </div>
+    
   );
 }
 
